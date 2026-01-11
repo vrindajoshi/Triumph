@@ -1,8 +1,11 @@
 import Airtable from "airtable";
 
-const airtable = new Airtable({
-  apiKey: process.env.AIRTABLE_API_KEY,
-});
+export function getBase() {
+  if (!process.env.AIRTABLE_API_KEY) {
+    throw new Error("AIRTABLE_API_KEY is missing");
+  }
 
-export const base = airtable.base(process.env.AIRTABLE_BASE_ID);
-
+  return new Airtable({
+    apiKey: process.env.AIRTABLE_API_KEY,
+  }).base(process.env.AIRTABLE_BASE_ID);
+}

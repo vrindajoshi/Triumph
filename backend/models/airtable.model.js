@@ -1,6 +1,8 @@
-import { base } from "../config/airtable.js";
+import { getBase } from "../config/airtable.js";
 
 export async function getAllSongs() {
+  const base = getBase();
+
   const records = await base("Songs").select().all();
 
   return records.map(record => ({
