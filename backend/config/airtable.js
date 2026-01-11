@@ -1,9 +1,8 @@
 import Airtable from "airtable";
 
-Airtable.configure({
+const airtable = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY,
 });
 
-const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
+export const base = airtable.base(process.env.AIRTABLE_BASE_ID);
 
-export default base;

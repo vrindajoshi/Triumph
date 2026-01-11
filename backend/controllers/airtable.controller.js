@@ -1,42 +1,51 @@
-// UPDATE lol
+import {
+  updatePlayedStatusByNameAndPerson,
+} from "../models/airtable.model.js";
 
-export const updateByFields = async (req, res) => {
-  const { where, update } = req.body;
-
+export async function updateSongStatus(req, res) {
   try {
-    // 1️⃣ Build Airtable formula
-    const formula = `AND(${Object.entries(where)
-      .map(([k, v]) => `{${k}}='${v}'`)
-      .join(",")})`;
+    const { targetSong, targetPerson, played } = req.body;
 
-    // 2️⃣ Find matching records
-    const records = await base("Songs")
-      .select({ filterByFormula: formula })
-      .firstPage();
-
-    if (records.length === 0) {
-      return res.status(404).json({ error: "No matching records found" });
+    if (
+      !targetSong ||
+      !targetPerson ||
+      typeof played !== "boolean"
+    ) {
+      return res.status(400).json({
+        error:
+          "targetSong, targetPerson, and played(boolean) are required",
+      });
     }
 
-    // 3️⃣ Update all matches
-    const updated = await base("Songs").update(
-      records.map(r => ({
-        id: r.id,
-        fields: update,
-      }))
-    );
+    const result =
+      await updatePlayedStatusByNameAndPerson(
+        targetSong,
+        targetPerson,
+        played
+      );
 
-    res.json({
-      updatedCount: updated.length,
-      records: updated.map(r => r.fields),
+    if (result === null) {
+      return res.status(404).json({
+        error: "Song not found for this user",
+      });
+    }
+
+    if (result === "MULTIPLE") {
+      return res.status(409).json({
+        error:
+          "Multiple matching songs found — database inconsistency",
+      });
+    }
+
+    res.status(200).json({
+      message: `Song marked as ${played ? "played" : "unplayed"}`,
+      song: result.name,
+      played: result.played,
     });
-
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    console.error("Error updating song status:", error);
+    res.status(500).json({
+      error: "Failed to update song status",
+    });
   }
-};
-
-
-export const getSongs = async (req, res) => {
-  
 }
