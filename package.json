@@ -4,20 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vrindajoshi/triumph.git"
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/vrindajoshi/triumph/issues"
-  },
-  "homepage": "https://github.com/vrindajoshi/triumph#readme",
+  "type": "module",
   "dependencies": {
     "airtable": "^0.12.2",
     "cors": "^2.8.5",
