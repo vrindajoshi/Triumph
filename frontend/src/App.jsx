@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './components/navbar'
+import Main from './pages/home'
+import GetName from './pages/getname'
+import ToPlay from './pages/toplay'
+import {Routes, Route} from 'react-router-dom'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <>
-      
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Main status={loggedIn}/>}/>
+        <Route path="/name" element={<GetName/>} />
+        <Route path="/to-play" element={<ToPlay status={loggedIn}/>} />
+      </Routes>
     </>
   )
 }
