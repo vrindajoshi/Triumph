@@ -1,8 +1,10 @@
-import Card from "../components/card";
+import Card from "../components/parents/card";
+import Background from "../components/parents/background";
+import VoiceflowWidget from "../components/chatwidget";
+
 
 export default function Main({status}) {
-    co
-    const [chat, setChat] = useState(status);
+    const [chatWidget, setChatWidget] = useState(status);
 
     if (chat) { // if the status of chat is true --> meaning the Widget should be showing
         return (
@@ -14,7 +16,7 @@ export default function Main({status}) {
                     <h1>let's find <u>your</u> next tune</h1>
                 </Card>
 
-                <ChatNowWidget/>
+                <VoiceflowWidget/>
             </Background>
         </>
         )
@@ -26,8 +28,6 @@ export default function Main({status}) {
                     <h1>find the <FancyFont>perfect</FancyFont> song for <FancyFont>every</FancyFont> moments</h1>
 
                     <h1>let's find <u>your</u> next tune</h1>
-
-                    <ChatNowToggle/>
                 </Card>
             </Background>
         </>

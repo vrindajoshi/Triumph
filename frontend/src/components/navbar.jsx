@@ -9,7 +9,7 @@ export default function Navbar() {
 
             <Link to></Link>
 
-            <Button to=><Link>Get Started</Link></Button>
+            <Button>Get Started</Button> // toggle chatbot on?? idk how to implement this
         </>
     )
 }
