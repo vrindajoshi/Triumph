@@ -4,10 +4,11 @@ const VOICEFLOW_PROJECT_ID = "694c729ea20f534a73cc2d7f";
 
 const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
   const initialized = useRef(false);
+  const widgetReady = useRef(false);
 
   useEffect(() => {
     // Prevent script from loading more than once
-    if (initialized.current || window.voiceflow) return;
+    if (initialized.current) return;
     
     initialized.current = true;
 
@@ -15,23 +16,43 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
     script.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
     script.type = "text/javascript";
     script.onload = () => {
-      window.voiceflow.chat.load({
-        verify: { projectID: VOICEFLOW_PROJECT_ID },
-        url: "https://general-runtime.voiceflow.com",
-        versionID: "production",
-        voice: {
-          url: "https://runtime-api.voiceflow.com",
-        },
-      });
+      if (window.voiceflow) {
+        window.voiceflow.chat.load({
+          verify: { projectID: VOICEFLOW_PROJECT_ID },
+          url: "https://general-runtime.voiceflow.com",
+          versionID: "production",
+          voice: {
+            url: "https://runtime-api.voiceflow.com",
+          },
+        });
+        widgetReady.current = true;
+      }
     };
     document.body.appendChild(script);
+
+    // Cleanup
+    return () => {
+      const existingScript = document.querySelector('script[src*="voiceflow"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
   }, []);
 
-  // Toggle visibility via CSS
+  // Toggle visibility and open chat
   useEffect(() => {
-    const widget = document.querySelector("vf-chat");
-    if (widget) {
-      widget.style.display = isOpen ? "block" : "none";
+    if (!widgetReady.current) return;
+
+    if (isOpen) {
+      // Open the Voiceflow chat
+      if (window.voiceflow?.chat?.open) {
+        window.voiceflow.chat.open();
+      }
+    } else {
+      // Close the Voiceflow chat
+      if (window.voiceflow?.chat?.close) {
+        window.voiceflow.chat.close();
+      }
     }
   }, [isOpen]);
 
@@ -43,7 +64,6 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
           style={{
             position: "fixed",
             inset: 0,
-            backgroundColor: "rgba(0,0,0,0.4)",
             zIndex: 1000,
           }}
         />
