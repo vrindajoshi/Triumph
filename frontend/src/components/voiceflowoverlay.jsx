@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const VOICEFLOW_PROJECT_ID = "694c729ea20f534a73cc2d7f";
 
 const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
+  const initialized = useRef(false);
+
   useEffect(() => {
-    if (window.voiceflow) return;
+    // Prevent script from loading more than once
+    if (initialized.current || window.voiceflow) return;
+    
+    initialized.current = true;
 
     const script = document.createElement("script");
     script.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
@@ -22,7 +27,7 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
     document.body.appendChild(script);
   }, []);
 
-  // Toggle visibility via CSS (not unmounting)
+  // Toggle visibility via CSS
   useEffect(() => {
     const widget = document.querySelector("vf-chat");
     if (widget) {

@@ -16,7 +16,7 @@ export default function GetName({ setInputValue }) {
                 placeholder="enter your name"
             />
 
-            <Link>SEE YOUR PICKS</Link>
+            <Link to="/to-play">SEE YOUR PICKS</Link>
         </>
     );
 }
