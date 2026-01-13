@@ -1,5 +1,3 @@
-export default function Background({...props}) {
-    <>
-        {...props}
-    </>
+export default function Background({ children }) {
+  return <>{children}</>;
 }

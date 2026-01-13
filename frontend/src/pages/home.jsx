@@ -1,5 +1,6 @@
 import Card from "../components/parents/card";
 import Background from "../components/parents/background";
+import FancyFont from "../components/parents/fancyfont";
 
 
 export default function Main() {

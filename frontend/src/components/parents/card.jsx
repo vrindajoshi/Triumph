@@ -1,7 +1,3 @@
-export default function Card({...props}) {
-    <>
-        <div>
-            {...props}
-        </div>
-    </>
+export default function Card({ children }) {
+  return <>{children}</>;
 }
