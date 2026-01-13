@@ -1,4 +1,7 @@
-export default function ToPlay() {
-
-    // table oh my this might be a disaster
+export default function ToPlay({ inputValue }) {
+  return (
+    <div>
+      <h1>Welcome, {inputValue}!</h1>
+    </div>
+  );
 }

@@ -1,15 +1,12 @@
+import { Link } from 'react-router-dom'
 
-export default function Navbar() {
-    
-    return (
-        <>
-            <Logo></Logo>
-
-            <h1>Triumph</h1>
-
-            <Link to></Link>
-
-            <Button>Get Started</Button> // toggle chatbot on?? idk how to implement this
-        </>
-    )
+export default function Navbar({ setIsChatOpen }) {
+  return (
+    <>
+      <Logo></Logo>
+      <h1>Triumph</h1>
+      <Link to="/get-name"></Link>
+      <button onClick={() => setIsChatOpen(true)}>Get Started</button>
+    </>
+  )
 }
