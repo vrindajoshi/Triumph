@@ -9,9 +9,9 @@ export default function Main() {
         <>
             <Background>
                 <Card>
-                    <h1>find the <FancyFont>perfect</FancyFont> song for <FancyFont>every</FancyFont> moment</h1>
+                    <div>find the <FancyFont>perfect</FancyFont> song for <FancyFont>every</FancyFont> moment</div>
 
-                    <h1>let's find <u>your</u> next tune</h1>
+                    <div>let's find <u>your</u> next tune</div>
                 </Card>
             </Background>
         </>
