@@ -6,7 +6,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getSongs);
-router.put("/status", updateSongStatus);
+router.get("/songs", getSongs);
+router.put("/songs/status", updateSongStatus);
 
 export default router;

@@ -7,10 +7,11 @@ export default function SongTable({ personId }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (personId) {
-      loadSongs();
-    }
-  }, [personId]);
+  console.log('personId received:', personId);
+  if (personId) {
+    loadSongs();
+  }
+}, [personId]);
 
   const loadSongs = async () => {
     try {

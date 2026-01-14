@@ -1,9 +1,13 @@
-const API_URL = 'http://localhost:5000/api/airtable'; 
+const API_URL = 'http://localhost:5001/api/airtable/songs'; 
 
 export const songsAPI = {
-  getAllSongs: async () => {
+  getAllSongs: async (personId = null) => {
     try {
-      const response = await fetch(`${API_URL}/songs`); 
+      const url = personId 
+        ? `${API_URL}?personId=${personId}` 
+        : `${API_URL}`;
+      
+      const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch songs');
       return await response.json();
     } catch (error) {
@@ -14,7 +18,7 @@ export const songsAPI = {
 
   updateSongStatus: async (name, personId, played) => {
     try {
-      const response = await fetch(`${API_URL}/songs/status`, {
+      const response = await fetch(`http://localhost:5001/api/airtable/songs/status`, { // Also update this
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
