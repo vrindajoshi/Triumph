@@ -1,12 +1,33 @@
 import { Link } from 'react-router-dom'
+import logo from '../assets/triumphLogo.svg'
 
 export default function Navbar({ setIsChatOpen }) {
   return (
-    <>
-        <div></div> {/* set to logo later */}
-      <Link to="/"><h1>Triumph</h1></Link>
-      <Link to="/get-name">TO PLAY LIST</Link>
-      <button onClick={() => setIsChatOpen(true)}>GET STARTED</button>
-    </>
+    <nav className="flex items-center justify-between px-50 py-4 bg-white">
+      {/* Logo and brand name */}
+      <div className="flex items-center gap-2">
+        <img src={logo} alt="Triumph Logo" className="w-8 h-8" />
+        <Link to="/" className="text-lg font-bold text-black">
+          Triumph
+        </Link>
+      </div>
+
+      {/* Navigation links */}
+      <div className="flex items-center gap-6">
+        <Link 
+          to="/get-name" 
+          className="text-black font-normal text-xs tracking-wide uppercase"
+        >
+          TO PLAY LIST
+        </Link>
+        
+        <button 
+          onClick={() => setIsChatOpen(true)}
+          className="px-6 py-2 bg-black text-white text-xs font-medium rounded-full tracking-wide uppercase"
+        >
+          GET STARTED
+        </button>
+      </div>
+    </nav>
   )
 }

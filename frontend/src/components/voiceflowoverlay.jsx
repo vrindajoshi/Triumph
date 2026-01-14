@@ -24,6 +24,9 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
           voice: {
             url: "https://runtime-api.voiceflow.com",
           },
+          assistant: {
+            renderMode: "popover"
+          }
         });
         widgetReady.current = true;
       }
