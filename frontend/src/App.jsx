@@ -23,11 +23,11 @@ function App() {
     <>
       <Navbar setIsChatOpen={setIsChatOpen} />
       <Routes>
-        <Route path="/" element={<Main />}/>
-        <Route path="/get-name" element={<GetName setInputValue={setInputValue} />}/>
+        <Route path="/" element={<Main setIsChatOpen={setIsChatOpen} />}/>
+        <Route path="/get-name" element={<GetName setInputValue={setInputValue} inputValue={inputValue} />}/>
         <Route path="/to-play" element={<ToPlay inputValue={inputValue} />}/>
       </Routes>
-      {/*<VoiceflowOverlay isOpen={isChatOpen} setIsOpen={setIsChatOpen} />*/}
+      <VoiceflowOverlay isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
     </>
   )
 }
