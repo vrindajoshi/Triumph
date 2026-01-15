@@ -5,8 +5,7 @@ import Card from '../components/parents/card.jsx';
 export default function ToPlay({ inputValue }) {
   return (
     <Background>
-      <Card>
-        <h1>Welcome, {inputValue}!</h1>
+        <Card>
         <SongTable personId={inputValue} />
       </Card>
     </Background>

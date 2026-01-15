@@ -7,11 +7,11 @@ export default function SongTable({ personId }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  console.log('personId received:', personId);
-  if (personId) {
-    loadSongs();
-  }
-}, [personId]);
+    console.log('personId received:', personId);
+    if (personId) {
+      loadSongs();
+    }
+  }, [personId]);
 
   const loadSongs = async () => {
     try {
@@ -34,7 +34,6 @@ export default function SongTable({ personId }) {
         song.id,
         !song.played
       );
-      
       setData(prevData => 
         prevData.map(s => 
           s.id === song.id && s.name === song.name
@@ -49,56 +48,98 @@ export default function SongTable({ personId }) {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!personId) return <div>No person ID provided</div>;
+  if (loading) return <div className="p-8">Loading...</div>;
+  if (error) return <div className="p-8 text-red-600">{error}</div>;
+  if (!personId) return <div className="p-8">No person ID provided</div>;
 
   return (
-    <div>
-      <h1>Songs</h1>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Composer</th>
-            <th>Instrument</th>
-            <th>Link</th>
-            <th>Played</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.length === 0 ? (
-            <tr>
-              <td colSpan="5">No songs found</td>
+    <div className="w-full max-w-6xl mx-auto">
+      <h1 className="text-4xl font-bold mb-8">To Play List</h1>
+      
+      <div className="rounded-lg overflow-hidden">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b-2 border-gray-400">
+              <th className="text-left py-4 px-6 text-gray-500 font-medium uppercase text-sm tracking-wide">
+                Name
+              </th>
+              <th className="text-left py-4 px-6 text-gray-500 font-medium uppercase text-sm tracking-wide">
+                Composer
+              </th>
+              <th className="text-left py-4 px-6 text-gray-500 font-medium uppercase text-sm tracking-wide">
+                Instrument
+              </th>
+              <th className="text-left py-4 px-6 text-gray-500 font-medium uppercase text-sm tracking-wide">
+                Played
+              </th>
+              <th className="text-left py-4 px-6 text-gray-500 font-medium uppercase text-sm tracking-wide">
+                Link
+              </th>
             </tr>
-          ) : (
-            data.map((row) => (
-              <tr key={`${row.id}-${row.name}`}>
-                <td>{row.name}</td>
-                <td>{row.composer}</td>
-                <td>{row.instrument}</td>
-                <td>
-                  {row.link ? (
-                    <a href={row.link} target="_blank" rel="noopener noreferrer">
-                      View
-                    </a>
-                  ) : (
-                    '-'
-                  )}
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={row.played || false}
-                    onChange={() => handleTogglePlayed(row)}
-                  />
+          </thead>
+          <tbody>
+            {data.length === 0 ? (
+              <tr>
+                <td colSpan="5" className="text-center py-8 text-gray-500">
+                  No songs found
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-      <p>Total: {data.length}</p>
+            ) : (
+              data.map((row) => (
+                <tr 
+                  key={`${row.id}-${row.name}`}
+                  className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                >
+                  <td className="py-6 px-6 font-medium">
+                    {row.name}
+                  </td>
+                  <td className="py-6 px-6 text-gray-700">
+                    {row.composer}
+                  </td>
+                  <td className="py-6 px-6 text-gray-700">
+                    {row.instrument}
+                  </td>
+                  <td className="py-6 px-6">
+                    <button
+                      onClick={() => handleTogglePlayed(row)}
+                      className="w-6 h-6 border-2 border-black rounded flex items-center justify-center cursor-pointer hover:bg-gray-100 transition-colors"
+                      aria-label={row.played ? "Mark as not played" : "Mark as played"}
+                    >
+                      {row.played && (
+                        <svg 
+                          className="w-4 h-4" 
+                          viewBox="0 0 20 20" 
+                          fill="currentColor"
+                        >
+                          <path 
+                            fillRule="evenodd" 
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                            clipRule="evenodd" 
+                          />
+                        </svg>
+                      )}
+                    </button>
+                  </td>
+                  <td className="py-6 px-6">
+                    {row.link ? (
+                      <a 
+                        href={row.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline break-all"
+                      >
+                        {row.link}
+                      </a>
+                    ) : (
+                      <span className="text-gray-400">-</span>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
