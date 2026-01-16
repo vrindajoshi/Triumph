@@ -20,7 +20,7 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
         window.voiceflow.chat.load({
           verify: { projectID: VOICEFLOW_PROJECT_ID },
           url: "https://general-runtime.voiceflow.com",
-          versionID: "development",
+          versionID: "production",
           voice: {
             url: "https://runtime-api.voiceflow.com",
           },
