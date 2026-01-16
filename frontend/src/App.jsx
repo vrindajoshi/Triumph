@@ -7,6 +7,7 @@ import {Routes, Route, useLocation} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import ToPlayWrapper from './components/parents/toplaywrapper.jsx'
 import { useNavigate } from 'react-router-dom';
+import ToPlay from './pages/toplay.jsx'
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -43,9 +44,7 @@ function App() {
       
       console.log('Message text:', messageText);
       
-      // Check if message contains "Redirecting"
       if (messageText && messageText.includes('Redirecting')) {
-        // Extract the name between "Redirecting " and "..."
         const match = messageText.match(/Redirecting (.+)\.\.\./);
         
         if (match && match[1]) {
@@ -53,7 +52,6 @@ function App() {
           console.log('Extracted name:', name);
           console.log('Redirecting to /to-play with name:', name);
           
-          // Navigate with the name
           navigate(`/to-play?name=${encodeURIComponent(name)}`);
         }
       }
@@ -80,6 +78,7 @@ function App() {
         <Route path="/" element={<Main setIsChatOpen={setIsChatOpen} />}/>
         <Route path="/get-name" element={<GetName setInputValue={setInputValue} inputValue={inputValue} />}/>
         <Route path="/to-play" element={<ToPlayWrapper />} />
+        <Route path="/toPlay" element={<ToPlay />} />
       </Routes>
       <VoiceflowOverlay isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
     </>

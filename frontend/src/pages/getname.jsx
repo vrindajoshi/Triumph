@@ -10,11 +10,11 @@ export default function GetName({ setInputValue, inputValue }) {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-      navigate("/to-play");
-    }
-  };
+  e.preventDefault();
+  if (inputValue.trim()) {
+    navigate(`/to-play?name=${encodeURIComponent(inputValue)}`);
+  }
+};
 
   const isValidName = inputValue.trim().length > 0;
 
@@ -32,21 +32,21 @@ export default function GetName({ setInputValue, inputValue }) {
             autoFocus
           />
           {isValidName ? (
-            <Link 
-              to="/to-play"
-              className="inline-block px-8 py-4 bg-black text-white text-md font-medium rounded-xl tracking-wide uppercase hover:bg-gray-800 transition-colors"
-            >
-              SEE YOUR PICKS
-            </Link>
-          ) : (
-            <button
-              type="button"
-              disabled
-              className="px-8 py-4 bg-gray-300 text-gray-500 text-md font-medium rounded-xl tracking-wide uppercase cursor-not-allowed opacity-60"
-            >
-              SEE YOUR PICKS
-            </button>
-          )}
+  <button
+    type="submit"
+    className="inline-block px-8 py-4 bg-black text-white text-md font-medium rounded-xl tracking-wide uppercase hover:bg-gray-800 transition-colors"
+  >
+    SEE YOUR PICKS
+  </button>
+) : (
+  <button
+    type="button"
+    disabled
+    className="px-8 py-4 bg-gray-300 text-gray-500 text-md font-medium rounded-xl tracking-wide uppercase cursor-not-allowed opacity-60"
+  >
+    SEE YOUR PICKS
+  </button>
+)}
         </form>
       </Card>
     </Background>
