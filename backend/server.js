@@ -36,9 +36,7 @@ process.on('unhandledRejection', (err) => {
 
 // start server
 const server = app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
   console.log(`✅ Ready to accept requests`);
-  console.log(`Test: curl http://localhost:${PORT}/test`);
 });
 
 server.on('error', (err) => {

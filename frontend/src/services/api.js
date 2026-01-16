@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5001/api/airtable/songs'; 
+const API_URL = 'https://triumph-71cy.onrender.com/api/airtable/songs'; 
 
 export const songsAPI = {
   getAllSongs: async (personId = null) => {
@@ -18,7 +18,7 @@ export const songsAPI = {
 
   updateSongStatus: async (name, personId, played) => {
     try {
-      const response = await fetch(`http://localhost:5001/api/airtable/songs/status`, { // Also update this
+      const response = await fetch(`https://triumph-71cy.onrender.com/api/airtable/songs/status`, { // Also update this
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
