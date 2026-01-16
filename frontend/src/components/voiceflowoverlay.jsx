@@ -20,12 +20,13 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
         window.voiceflow.chat.load({
           verify: { projectID: VOICEFLOW_PROJECT_ID },
           url: "https://general-runtime.voiceflow.com",
-          versionID: "production",
+          versionID: "development",
           voice: {
             url: "https://runtime-api.voiceflow.com",
           },
           assistant: {
-            renderMode: "popover"
+            renderMode: "widget",
+            persistence: 'memory'
           }
         });
         widgetReady.current = true;
