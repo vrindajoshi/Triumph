@@ -1,6 +1,6 @@
 # Triumph 🎺
 
-An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through conversational AI.
+An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through an agent built in Voiceflow.
 
 ## Overview
 
@@ -9,7 +9,7 @@ Triumph combines a conversational AI agent with a modern web application to prov
 ## Features
 
 - **Conversational Recommendations**: Chat naturally with an AI agent that understands your musical needs and preferences
-- **Curated Trumpet Library**: Access to 200+ trumpet pieces from IMSLP's open-source repository
+- **Curated Trumpet Library**: Access to trumpet pieces from IMSLP's open-source repository
 - **Direct Sheet Music Links**: Get immediate access to free, legal sheet music
 - **Personal Library**: Automatically save recommended pieces for future reference
 - **Smart Context**: The agent remembers what you've already played or saved to avoid duplicate recommendations
@@ -30,29 +30,10 @@ Triumph combines a conversational AI agent with a modern web application to prov
 
 ### Frontend
 - **Voiceflow Widget**: Embedded chat interface
-- **Design**: Clean, minimal UI inspired by Voiceflow's color scheme (Black, White, Grey)
+- **Design**: Clean, minimal UI inspired by Voiceflow's color scheme (Black, White, Grey), designed in Figma
 
 ### Data Collection
 - **Python Web Scraper**: Custom scraper built to collect piece names and composers from IMSLP
-- **ChatGPT Integration**: Used to enrich metadata with difficulty ratings, emotional context, and historical information
-
-## Project Structure
-
-```
-triumph/
-├── backend/
-│   ├── api/
-│   │   ├── getSongData
-│   │   └── updatePlayedStatus
-│   └── airtable-config
-├── frontend/
-│   ├── voiceflow-widget
-│   └── ui-components
-├── voiceflow-agent/
-│   └── agent-configuration
-└── data/
-    └── trumpet-pieces.json
-```
 
 ## Setup
 
@@ -111,11 +92,11 @@ triumph/
 ## Future Roadmap
 
 - [ ] User authentication and personal accounts
-- [ ] Context-aware recommendations based on listening history
+- [ ] Improve context-aware recommendations based on listening history
 - [ ] Multi-instrument support (currently trumpet-only)
 - [ ] Improved metadata accuracy through professional music research
-- [ ] Custom Voiceflow API integration for enhanced widget customization
 - [ ] Practice tracking and progress monitoring
+- [ ] Embedded PDFs and video links
 
 ## Data Sources
 
