@@ -3,10 +3,11 @@
 An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through a CX focused agent.
 
 [Loom Demo](https://www.loom.com/share/0cb7e79888064897a24313b509e8ed63)
+[Link](https://triumph-one.vercel.app)
 
 ## Overview
 
-Triumph combines a conversational AI agent with a modern web application to provide personalized sheet music recommendations. Users can chat with the assistant to discover pieces that match their skill level and musical preferences, with all recommendations automatically saved to a personal library.
+Triumph combines an AI agent with a full-stack web application, providing a hub for personalized sheet music recommendations and practicing. Users can chat with the assistant to discover pieces that match their skill level and musical preferences, with all recommendations automatically saved to a personal library.
 
 ## Features
 
@@ -15,7 +16,7 @@ Triumph combines a conversational AI agent with a modern web application to prov
 - **Direct Sheet Music Links**: Get immediate access to free, legal sheet music
 - **Personal Library**: Automatically save recommended pieces for future reference
 - **Smart Context**: The agent remembers what you've already played or saved to avoid duplicate recommendations
-- **Rich Metadata**: Each piece includes information about difficulty, emotion, and historical relevance
+- **Metadata**: Each piece includes information about difficulty, emotion, and historical relevance
 
 ## Tech Stack
 
@@ -43,24 +44,6 @@ Triumph combines a conversational AI agent with a modern web application to prov
 - Voiceflow account
 - Airtable account
 - Node.js (for local development)
-
-### Installation
-
-1. Clone the repository
-2. Set up your Airtable base with the following fields:
-   - User Name
-   - Email
-   - Song Title
-   - Composer
-   - Sheet Music Link
-   - Played Status
-
-3. Configure Voiceflow agent:
-   - Import the agent configuration
-   - Connect to your Airtable API
-   - Add the trumpet pieces knowledge base
-
-4. Deploy the frontend with the Voiceflow widget embedded
 
 ## Usage
 
