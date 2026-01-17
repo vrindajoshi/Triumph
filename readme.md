@@ -2,6 +2,8 @@
 
 An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through a CX focused agent.
 
+[Loom Demo](https://www.loom.com/share/0cb7e79888064897a24313b509e8ed63)
+
 ## Overview
 
 Triumph combines a conversational AI agent with a modern web application to provide personalized sheet music recommendations. Users can chat with the assistant to discover pieces that match their skill level and musical preferences, with all recommendations automatically saved to a personal library.
