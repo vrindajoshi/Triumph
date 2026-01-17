@@ -38,13 +38,6 @@ Triumph combines an AI agent with a full-stack web application, providing a hub 
 ### Data Collection
 - **Python Web Scraper**: Custom scraper built to collect piece names and composers from IMSLP
 
-## Setup
-
-### Prerequisites
-- Voiceflow account
-- Airtable account
-- Node.js (for local development)
-
 ## Usage
 
 1. Open the Triumph application
