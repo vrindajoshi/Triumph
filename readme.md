@@ -1,6 +1,6 @@
 # Triumph 🎺
 
-An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through an agent built in Voiceflow.
+An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through a CX focused agent.
 
 ## Overview
 
