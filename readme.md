@@ -2,7 +2,7 @@
 
 An intelligent sheet music recommendation assistant powered by Voiceflow, helping musicians discover and organize trumpet repertoire through a CX focused agent.
 
-[Loom Demo](https://www.loom.com/share/0cb7e79888064897a24313b509e8ed63)
+[Loom Demo](https://www.loom.com/share/0cb7e79888064897a24313b509e8ed63) | 
 [Link](https://triumph-one.vercel.app)
 
 ## Overview
