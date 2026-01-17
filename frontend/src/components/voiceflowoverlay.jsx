@@ -7,7 +7,6 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
   const widgetReady = useRef(false);
 
   useEffect(() => {
-    // Prevent script from loading more than once
     if (initialized.current) return;
     
     initialized.current = true;
@@ -34,7 +33,6 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
     };
     document.body.appendChild(script);
 
-    // Cleanup
     return () => {
       const existingScript = document.querySelector('script[src*="voiceflow"]');
       if (existingScript) {
@@ -43,7 +41,6 @@ const VoiceflowOverlay = ({ isOpen, setIsOpen }) => {
     };
   }, []);
 
-  // Toggle visibility and open chat
   useEffect(() => {
     if (!widgetReady.current) return;
 
